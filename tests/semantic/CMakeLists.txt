@@ -6,7 +6,7 @@
 
 include(SouffleTests)
 
-add_subdirectory(pragma2)
+#add_subdirectory(pragma2)
 
 function(positive_test NAME)
     souffle_positive_test(${NAME} semantic)
@@ -224,6 +224,6 @@ positive_test(pragma1)
 #         idea of an so w/ non alpha-numeric characters in the name.
 #         See `tests/semantic/pragma2/CMakeLists.txt` for details.
 # souffle_positive_functor_test(pragma2 CATEGORY semantic)
-souffle_run_test_helper(TEST_NAME pragma2 FUNCTORS CATEGORY semantic)
+#souffle_run_test_helper(TEST_NAME pragma2 FUNCTORS CATEGORY semantic)
 positive_test(rel_redundant)
 positive_test(type_as4)
