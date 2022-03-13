@@ -304,7 +304,9 @@ function(AUTOMAKE_COMPATIBLE_SUBST F_IN F_OUT)
     #    e.g. we might use clang-10, user might use gcc or some newer version of clang.
     # *) Synth'd code isn't warning free for now anyways.
     #    TODO: Require/verify that test case synthesised code is warning free as part of test suite.
-    string(REGEX REPLACE "-Werror" ""  SOUFFLE_CXXFLAGS "${CMAKE_CXX_FLAGS}")
+    set(SOUFFLE_CXXFLAGS "${CMAKE_CXX_FLAGS}")
+    string(REGEX REPLACE "-Werror=format-security" ""  SOUFFLE_CXXFLAGS "${SOUFFLE_CXXFLAGS}")
+    string(REGEX REPLACE "-Werror" ""  SOUFFLE_CXXFLAGS "${SOUFFLE_CXXFLAGS}")
     set(SOUFFLE_CXXFLAGS "${SOUFFLE_CXXFLAGS} ${CMAKE_CXX_FLAGS_${BT_UPPER}} ${SUBST_DEFS}")
     if (OPENMP_FOUND)
        set(SOUFFLE_CXXFLAGS "${SOUFFLE_CXXFLAGS} -fopenmp")
